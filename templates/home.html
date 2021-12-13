@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+  margin: 0;
+  padding: 0
+}
+body {
+  background: url('../static/Study-Abroad1.jpg');
+  color: #B1B1B1;
+  margin: 15px auto 0;
+  width: 410px;
+}
+#details {
+  overflow: auto;
+}
+#details #form {
+  width:auto;
+  float:left;
+  backdrop-filter: blur(4px);
+  border: 2px solid black;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+}
+#details #form h2 {
+  font: 48px 'Bree Serif', Georgia, serif;
+}
+h1{
+    display: block;
+    font: 25px'Bree Serif', Georgia, serif;
+    color: white;
+    border: 3px solid peru;
+    background-color: orangered;
+    padding: 5px 5px 5px 60px;
+    margin: 8px 8px 50px 8px;
+    border-radius: 8px;
+}
+#details #form span {
+  display:block;
+  float:left;
+  width:100px;
+  padding-top:5px;
+  font: 15px'Bree Serif', Georgia, serif;
+  color: black;
+}
+#details #form input {
+  float:left;
+  width:255px;
+  border:2px solid black;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  margin: 8px 8px 8px 8px;
+  color:gray;
+  font: 15px'Open Sans', Verdana, Helvetica, sans-serif;
+  margin-bottom:10px;
+}
+span{
+  font-weight: bolder;
+}
+#d1{
+  margin: 15px;
+  padding: 5px;
+  color: white;
+  float: right;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid peru;
+  border-radius: 5px;
+  font: 20px'Bree Serif', Georgia, serif;
+  background-color: orangered;
+}
+#details #form input.submit {
+  cursor: pointer;
+  width:85px;
+  height:40px;
+  float:right;
+  border: 2px solid peru;
+  border-radius: 5px;
+  padding:0px 0px 5px 0px;
+  margin:10px 16px 0px 0px;
+  background:orangered;
+  color:white;
+  font: 20px'Bree Serif', Georgia, serif;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  color: black;
+  text-shadow: 2px 2px 3px black;
+}
+        </style>
+    </head>
+    <body>
+        <section id="details">
+            <div class="content">
+              <h1>Graduate School Finder</h1>
+                <div id="form">
+                <form action="" id="contactForm" method="post">
+                  <span>GRE</span>
+                  <input type="text" name="gre" class="gre" placeholder="Enter your gre score" tabindex=1 />
+                  <span>TOEFL</span>
+                  <input type="text" name="tfl" class="tfl" placeholder="Enter your toefl score" tabindex=2 />
+                  <span>LOR Rating</span>
+                  <input type="text" name="lor" class="lor" placeholder="1-5 inclusive" tabindex=3 />
+                  <span>SOP Rating</span>
+                  <input type="text" name="sop" class="sop" placeholder="1-5 inclusive" tabindex=4 />
+                  <span>CGPA</span>
+                  <input type="text" name="cgpa" class="cgpa" placeholder="Enter cgpa of your undergrad" tabindex=5 />
+                  <span>Research Activity</span>
+                  <input type="text" name="ra" class="ra" placeholder="1 if done any, 0 otherwise" tabindex=6 />
+                  <input type="submit" name="submit" value="Predict!" class="submit" tabindex=5>
+                </form>
+              </div>
+            </div>
+        </section>
+        <div id="d1">
+          <a href="https://gradschool-info.w3spaces.com/" target="_blank">Get Info</a>
+        </div>
+    </body>
+</html>
+	

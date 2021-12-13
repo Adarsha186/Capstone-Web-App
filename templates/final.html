@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: rgb(100, 211, 100);
+        }
+        h1,h2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .d1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul{
+            border-radius: 5px;
+            border: 3px solid black;
+        }
+        li{
+            font-family: cursive;
+            font-size: 30px;
+            padding: 10px 10px 10px 10px;
+            margin: 8px 8px 8px 8px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        a:hover{
+            text-decoration: wavy;
+            color: black;
+            text-shadow: 2px 2px 5px black;
+        }
+        #a2{
+            color: white;
+        }
+        .d2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #a1{
+            text-align: center;
+            color: black;
+            background-color: azure;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid darkgrey;
+        }
+        ul{
+            list-style: none;
+        }
+        #f1{
+            padding: 15px;
+            background: darkgreen;
+            width: auto;
+            padding-left: 550px;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            
+        }
+        .t1{
+            box-shadow: 2px 2px 25px black;
+            border-top: 20px solid black;
+            border-left: 4px solid black;
+            border-right:4px solid black;
+            border-bottom:4px solid black;
+            border-color: darkgreen;
+            margin-bottom: 40px;
+            background: url("https://coolbackgrounds.io/images/backgrounds/white/white-triangle-369b8d2d.jpg");
+        }
+        table,td,th{
+            border: 2px;
+            color:  black;
+            text-align: center;
+            padding: 20px;
+            font-size: x-large;
+            margin-top: 5px;
+            border-collapse: collapse;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+        <h1>Based on our analysis we recommend you to look into Tier {{ result }} Universities.</h1>
+       {%if result==1 %}
+           <div class="d1">
+            <table class="t1">
+                <tr><td><a href="https://gradadmissions.stanford.edu/programs/computer-science">Stanford University</a></td></tr>
+                <tr><td><a href="https://gradadmissions.mit.edu/programs/csesm">Massachusetts Institute of Technology</a></td></tr>
+                <tr><td><a href="https://cms.caltech.edu/academics/grad_cs">California Institute of Technology</a></td></tr>
+                <tr><td><a href="https://cpsc.yale.edu/academics/graduate-program/master-science">Yale University</a></td></tr>
+                <tr><td><a href="https://www.mccormick.northwestern.edu/computer-science/academics/graduate/admissions/">Northwestern University</a></td></tr>
+                <tr><td><a href="https://masters.cs.uchicago.edu/">University of Chicago</a></td></tr>
+                <tr><td><a href="https://www.cs.jhu.edu/academic-programs/graduate-studies/mse-programs/">John Hopkins University</a></td></tr>
+                <tr><td><a href="https://grad.berkeley.edu/program/computer-science/">University of California Berkeley</a></td></tr>
+            </table>
+            
+            </div>
+       {%endif%}
+       {%if result==2 %}
+           <div class="d1">
+       <table class="t1">
+            <tr><td><a href="https://cs.indiana.edu/programs/ms-computer-science.html">Indiana University Bloomington</a></li></td></tr>
+            <tr><td><a href="https://www.northeastern.edu/graduate/program/master-of-science-in-computer-science-boston-5238/">Northeastern University</a></li></td></tr>
+            <tr><td><a href="https://www.cs.seas.gwu.edu/master-science-computer-science">George Washington University</a></li></td></tr>
+            <tr><td><a href="https://www.cs.pitt.edu/current-students/ms-computer-science">University of Pittsburgh</a></li></td></tr>
+            <tr><td><a href="https://www.cs.rutgers.edu/academics/graduate/m-s-program">Rutgers University</a></li></td></tr>
+            <tr><td><a href="https://www.csc.ncsu.edu/academics/graduate/degrees/ms.php">North Carolina State University</a></li></td></tr>
+            <tr><td><a href="https://gradschool.umd.edu/computermathematicalnatural-sciences/cmsc">University of Maryland College Park</a> </li></td></tr>
+            <tr><td><a href="https://graduate.engineering.asu.edu/computer-science/">Arizona State University</a> </li></td></tr>
+       </table>
+        </div>
+       {%endif%}
+       {%if result==3 %}
+           <div class="d1">
+       <table class="t1">
+        <tr><td><a href="https://www.usf.edu/engineering/cse/graduate/mscs-catalog.aspx">University of South Florida</a></td></tr>
+        <tr><td><a href="https://cs.uic.edu/graduate/ms-program/">University of Illionis Chicago</a></td></tr>
+        <tr><td><a href="https://udayton.edu/artssciences/academics/computerscience/academic/msc.php">University of Dayton Ohio</a></td></tr>
+        <tr><td><a href="https://www.clarkson.edu/graduate/computer-science/curriculum-ms">Clarkson University</a></td></tr>
+        <tr><td><a href="https://www.umsl.edu/cmpsci/graduate-studies/ms-compsci.html">University of Missouri</a></td></tr>
+        <tr><td><a href="https://catalog.ua.edu/graduate/engineering/computer-science/ms/">University of Alabama</a></td></tr>
+        <tr><td><a href="https://www.uml.edu/Sciences/computer-science/Programs/Masters/">University of Massachusetts Lowell</a></td></tr>
+        <tr><td><a href="https://www.albany.edu/computer-science/programs/ms-computer-science">University at Albany New York</a></td></tr>
+       </table>
+    </div>
+       {%endif%}
+       {%if result==4 %}
+           <div class="d1">
+       <table class="t1">
+        <tr><td><a href="http://catalog.kent.edu/colleges/as/cs/computer-science-ms/">Kent State University</a></td></tr>
+        <tr><td><a href="https://www.depts.ttu.edu/cs/grad/ms-cs/">Texas Tech University</a></td></tr>
+        <tr><td><a href="https://www.gsu.edu/program/computer-science-ms/">Georgia State University</a></td></tr>
+        <tr><td><a href="https://www.memphis.edu/cs/programs/ms_computer_science.php">University of Memphis</a></td></tr>
+        <tr><td><a href="https://und.edu/programs/computer-science-ms/index.html">University of North Dakota</a></td></tr>
+        <tr><td><a href="https://cas.campbell.edu/academic-programs/information-technology-security/">Campbell University</a></td></tr>
+        <tr><td><a href="https://www.cau.edu/school-of-arts-and-sciences/cis/graduate-programs.html">Clark Atlanta University</a></td></tr>
+        <tr><td><a href="https://www.bridgeport.edu/academics/programs/computer-science-ms/">University of Bridgeport</a></td></tr>
+       </table></div>
+       {%endif%}
+       <footer id="f1">
+            <span>&#169 Y.Adarsha - 18BCE7186,</span>
+            <span><a id="a2" href="mailto:adarshay2016@gmail.com">adarshay2016@gmail.com</a></span>
+        </footer>
+</body>
+</html>
