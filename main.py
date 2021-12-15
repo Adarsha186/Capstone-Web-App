@@ -1,13 +1,58 @@
 import pandas as pd
-#import matplotlib.pyplot as plt
-#import seaborn as sns
+import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import pickle
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
+from sklearnex.svm import SVC
 
 data1 = pd.read_csv("Admission_Predict.csv")
 data1 = data1.rename(columns={'GRE Score': 'GRE', 'TOEFL Score': 'TOEFL', 'LOR ': 'LOR', 'Chance of Admit ': 'CoA'})
+
+print("---------------------Description of the data sets---------------------\n")
+print(data1.describe)
+print(data1.isnull().sum())
+plt.figure(figsize=(5, 5))
+plt.bar(data1["Research"].apply(str), data1["CoA"])
+plt.title("Impact of research activity on admission chances")
+plt.xlabel('Research Work')
+plt.ylabel('Admission chances')
+plt.show()
+
+plt.figure(figsize=(8, 8))
+plt.scatter(x="CGPA", y="GRE", data=data1)
+plt.title("Comparison between Cgpa and Gre Scores")
+plt.xlabel('CGPA')
+plt.ylabel('GRE')
+plt.show()
+
+plt.figure(figsize=(8, 8))
+plt.scatter(x="CoA", y="GRE", data=data1)
+plt.title("Comparison between Admit Chances and Gre Scores")
+plt.xlabel('Admission Chances')
+plt.ylabel('GRE')
+plt.show()
+
+plt.figure(figsize=(8, 8))
+plt.scatter(x="CoA", y="TOEFL", data=data1)
+plt.title("Comparison between Admit Chances and TOEFL Scores")
+plt.xlabel('Admission Chances')
+plt.ylabel('TOEFL')
+plt.show()
+
+print(data1.corr(method='kendall'))
+
+print(data1.corr(method='pearson'))
+
+corr_matrix = data1.corr()
+print(corr_matrix["CGPA"])
+
+print(corr_matrix["GRE"])
 
 x = 0
 j = 0
@@ -32,7 +77,35 @@ y1 = data1["CoA"]
 x1 = data1.drop("CoA", axis="columns")
 x1_train, x1_test, y1_train, y1_test = train_test_split(x1, y1, test_size=0.2)
 
+linear_regression = LinearRegression()
+linear_regression = linear_regression.fit(x1_train, y1_train)
+model = LinearRegression(normalize=True)
+model.fit(x1_test, y1_test)
+linearScore=model.score(x1_test, y1_test)
+#print("Accuracy of linear regression model : ",linearScore*100,"%")
+
+classifier = SVC(kernel='linear')
+classifier.fit(x1_train, y1_train)
+SVM_Score=classifier.score(x1_test, y1_test)
+#print("Accuracy of SVM model : ",SVM_Score*100,"%")
+
 knn = KNeighborsClassifier(n_neighbors=20)
 knn.fit(x1_train, y1_train)
 print(knn.predict([[331, 111, 3, 3, 8, 1]]))
+
+random_forest = RandomForestRegressor(max_depth=1, n_estimators=100, random_state=1)
+random_forest.fit(x1_train, y1_train)
+root_mean_squared_error = np.sqrt(mean_squared_error(y1_train, random_forest.predict(x1_train)))
+print(root_mean_squared_error)
+
+
+root_mean_squared_error_knn = np.sqrt(mean_squared_error(y1_train, knn.predict(x1_train)))
+print(root_mean_squared_error_knn)
+print(random_forest.predict([[331, 111, 3, 3, 8, 1]]))
+
+root_mean_squared_error_svm = np.sqrt(mean_squared_error(y1_train, classifier.predict(x1_train)))
+print(root_mean_squared_error_svm)
+
 pickle.dump(knn, open('GradSchool.pkl', 'wb'))
+
+print("\nPrediction Model dumped successfully")
