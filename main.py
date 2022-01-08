@@ -9,7 +9,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
-from sklearnex.svm import SVC
+# from sklearnex.svm import SVC
+from sklearn.svm import SVC
 
 data1 = pd.read_csv("Admission_Predict.csv")
 data1 = data1.rename(columns={'GRE Score': 'GRE', 'TOEFL Score': 'TOEFL', 'LOR ': 'LOR', 'Chance of Admit ': 'CoA'})
@@ -81,31 +82,35 @@ linear_regression = LinearRegression()
 linear_regression = linear_regression.fit(x1_train, y1_train)
 model = LinearRegression(normalize=True)
 model.fit(x1_test, y1_test)
-linearScore=model.score(x1_test, y1_test)
-#print("Accuracy of linear regression model : ",linearScore*100,"%")
+linearScore = model.score(x1_test, y1_test)
+# print("Accuracy of linear regression model : ",linearScore*100,"%")
 
-classifier = SVC(kernel='linear')
-classifier.fit(x1_train, y1_train)
-SVM_Score=classifier.score(x1_test, y1_test)
-#print("Accuracy of SVM model : ",SVM_Score*100,"%")
+SVM_classifier = SVC(kernel='linear')
+SVM_classifier.fit(x1_train, y1_train)
+SVM_Score = SVM_classifier.score(x1_test, y1_test)
+# print("Accuracy of SVM model : ",SVM_Score*100,"%")
 
 knn = KNeighborsClassifier(n_neighbors=20)
 knn.fit(x1_train, y1_train)
-print(knn.predict([[331, 111, 3, 3, 8, 1]]))
+print(SVM_classifier.predict([[331, 111, 3, 3, 8, 1]]))
 
 random_forest = RandomForestRegressor(max_depth=1, n_estimators=100, random_state=1)
 random_forest.fit(x1_train, y1_train)
 root_mean_squared_error = np.sqrt(mean_squared_error(y1_train, random_forest.predict(x1_train)))
-print(root_mean_squared_error)
-
+random_forest_score = random_forest.score(x1_test, y1_test)
+print("Accuracy of Random Forest model : ",random_forest_score*100,"%")
+print("RMSE of random forest model : ",root_mean_squared_error)
 
 root_mean_squared_error_knn = np.sqrt(mean_squared_error(y1_train, knn.predict(x1_train)))
-print(root_mean_squared_error_knn)
-print(random_forest.predict([[331, 111, 3, 3, 8, 1]]))
+knn_score = knn.score(x1_test, y1_test)
+print("Accuracy of KNN model : ",knn_score*100,"%")
+print("RMSE value of KNN : ",root_mean_squared_error_knn)
 
-root_mean_squared_error_svm = np.sqrt(mean_squared_error(y1_train, classifier.predict(x1_train)))
-print(root_mean_squared_error_svm)
+root_mean_squared_error_svm = np.sqrt(mean_squared_error(y1_train, SVM_classifier.predict(x1_train)))
+SVM_Score = SVM_classifier.score(x1_test, y1_test)
+print("Accuracy of SVM model : ",SVM_Score*100,"%")
+print("RMSE of SVM model : ",root_mean_squared_error_svm)
 
-pickle.dump(knn, open('GradSchool.pkl', 'wb'))
+pickle.dump(SVM_classifier, open('GradSchool.pkl', 'wb'))
 
 print("\nPrediction Model dumped successfully")
